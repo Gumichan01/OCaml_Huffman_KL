@@ -1,0 +1,42 @@
+
+Roadmap projet OCaml - Compression de Huffman
+
+
+==== COMPRESSION ====
+
+ -> Faire l'histogramme | DONE
+
+ -> Faire l'arbre de Huffman | DONE
+
+ -> Construire le fichier compressé | DOING
+
+ -> Finir de construire la structure du fichier compressé 
+	( mettre les '0' four arriver à une frontière d'octets + metre l'octet m + les m octets [ m >= 0 ]  ) | DOING
+
+ -> Tester l'interopérabilité avec le décompresseur du prof | TODO
+
+
+
+==== DECOMPRESSION ====
+
+ -> Lire les octets magiques et vérifier | TODO
+
+ -> Faire la lecture de l'arbre | TODO
+
+ -> Lire les codes et ecrire dans le fichier texte décompressé | TODO
+
+ -> Vérifier la validité du fichier texte -> $ md5sum sur le terminal | TODO
+
+ -> Tester l'interopérabilité avec le compresseur du prof | TODO
+
+
+
+==== EXTENSIONS ====
+
+ Extensions possibles : 
+
+ - Gestion de l'Unicode (UTF-8)
+
+ - Intégration de la checksum (md5) du fichier avant compression
+
+
