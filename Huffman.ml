@@ -123,9 +123,33 @@ let rec construire_Huffman = function
 
 
 
+(* On définit un type algébrique qui va stocker la lettre et son code associé *)
+
+type codeCompress = Code of (char * int list);;
+
+Code('a', [1;0]);;
+
+exception Arbre_vide;;
+exception Histo_vide;;
+
+let construireCode arbre =
+  let rec construireCode_aux arbre l_bit l_code = match arbre with
+  | Nil -> raise Arbre_vide
+  | Feuille f ->(match f with
+      | Vide -> raise Histo_vide
+      | Couple(c,_) -> Code(c, l_bit)::l_code )
+  | Node(_,g,d) -> let lb = l_bit in let l_code_bis = construireCode_aux g (lb@[0]) l_code in
+		   (l_code_bis@(construireCode_aux d (l_bit@[1]) l_code))
+  in construireCode_aux arbre [] [];;
+
+construireCode Nil;;
+construireCode (Feuille(Couple('t', 8)));;
 
 
+let texte = lire_fichier "data/abracadabra.txt";;
+let histogramme = creer_histo texte (gen_list_occ (texte));;
+let sorted_histogramme = sort_histo histogramme;;
+let liste_arbre =  conversion_histoToArbre sorted_histogramme;;
+let huff_tree = construire_Huffman liste_arbre;;
 
-
-
-
+let result = construireCode huff_tree;;
