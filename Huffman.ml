@@ -87,19 +87,6 @@ let fusion a1 a2= match a1,a2 with
   |Node(n1,_,_) , Node(n2, _, _) -> Node( (n1 + n2), a1, a2)
 ;;
 
-(* Tests  *)
-
-(*fusion Nil Nil;;
-fusion Nil (Feuille(Couple('t', 1)));;
-fusion (Feuille(Couple('t', 4))) Nil;;
-fusion (Feuille(Couple('a', 2))) (Feuille(Vide));;
-fusion (Feuille(Vide)) (Feuille(Couple('b', 2)));;
-fusion (Feuille(Couple('a', 2))) (Feuille(Couple('t', 1)));;
-fusion (Feuille(Couple('a', 2))) (Node(5,Feuille(Couple('t', 3)), Feuille(Couple('c', 2)) ));;
-fusion (Node(4,Feuille(Couple('t', 2)), Feuille(Couple('c', 2)) )) (Feuille(Couple('t', 1)));;
-fusion (Node(4,Feuille(Couple('t', 2)), Feuille(Couple('c', 2)) )) (Node(5,Feuille(Couple('s', 2)), Feuille(Couple('r', 3)) )) ;;*)
-
-
 
 (* On convertit la liste d'histogramme en liste d'arbres (forêt) *)
 
@@ -146,11 +133,11 @@ construireCode Nil;;
 construireCode (Feuille(Couple('t', 8)));;
 
 
-let texte = lire_fichier "data/abracadabra.txt";;
+(*let texte = lire_fichier "data/abracadabra.txt";;
 let histogramme = creer_histo texte (gen_list_occ (texte));;
 let histogramme = insert_histo (Couple('\255',1)) histogramme;;
 let sorted_histogramme = sort_histo histogramme;;
 let liste_arbre =  conversion_histoToArbre sorted_histogramme;;
 let huff_tree = construire_Huffman liste_arbre;;
 
-let result = construireCode huff_tree;;
+let result = construireCode huff_tree;;*)

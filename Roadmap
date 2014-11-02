@@ -16,7 +16,7 @@ Roadmap projet OCaml - Compression de Huffman
 
  -> Tester l'interopérabilité avec le décompresseur du prof | DONE
 
- -> Optimisation : Construire dynamiquement l'histogramme dès le parcours du fichier
+ -> Optimisation : Construire dynamiquement l'histogramme dès le parcours du fichier | DONE
 
 
 ==== DECOMPRESSION ====
