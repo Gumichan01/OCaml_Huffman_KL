@@ -2,7 +2,8 @@
 Roadmap projet OCaml - Compression de Huffman
 
 
-==== COMPRESSION ====
+
+==== COMPRESSION (DONE) ====
 
  -> Faire l'histogramme | DONE
 
@@ -11,10 +12,11 @@ Roadmap projet OCaml - Compression de Huffman
  -> Construire le fichier compressé | DOING
 
  -> Finir de construire la structure du fichier compressé 
-	( mettre les '0' four arriver à une frontière d'octets + metre l'octet m + les m octets [ m >= 0 ]  ) | DOING
+	( mettre les '0' four arriver à une frontière d'octets + metre l'octet m + les m octets [ m >= 0 ]  ) | DONE
 
- -> Tester l'interopérabilité avec le décompresseur du prof | TODO
+ -> Tester l'interopérabilité avec le décompresseur du prof | DONE
 
+ -> Optimisation : Construire dynamiquement l'histogramme dès le parcours du fichier
 
 
 ==== DECOMPRESSION ====

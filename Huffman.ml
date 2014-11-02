@@ -83,6 +83,7 @@ let fusion a1 a2= match a1,a2 with
   | Node(n, t1, t2), Feuille(cp2) -> (match cp2 with
       |Vide -> a1
       |Couple(_, i2) -> Node((n + i2),a1,a2))
+  |Node(n1,g,Nil), Node(n2,_,_) -> Node( (n1 + n2), g,a2)
   |Node(n1,_,_) , Node(n2, _, _) -> Node( (n1 + n2), a1, a2)
 ;;
 
@@ -104,7 +105,6 @@ fusion (Node(4,Feuille(Couple('t', 2)), Feuille(Couple('c', 2)) )) (Node(5,Feuil
 
 let rec conversion_histoToArbre l_histo = match l_histo with
   | [] -> []
-  | [s] -> [Feuille(s)]
   | t::q -> Feuille(t)::(conversion_histoToArbre q);;
 
 
@@ -117,7 +117,7 @@ let rec construire_Huffman = function
       | Nil -> failwith "Erreur : Arbre non valide"
       | Feuille(c) -> ( match c with
 	  | Vide -> failwith " Erreur : Couple vide, non valide"
-	  | Couple(a,b) ->  Node(b,Nil, t))  
+	  | Couple(a,b) ->  t)
       | Node(_,_,_) -> t )
   | t1::t2::q -> construire_Huffman(insert_tree (fusion t1 t2) q);;
 
@@ -134,7 +134,7 @@ exception Histo_vide;;
 
 let construireCode arbre =
   let rec construireCode_aux arbre l_bit l_code = match arbre with
-  | Nil -> raise Arbre_vide
+  | Nil -> []
   | Feuille f ->(match f with
       | Vide -> raise Histo_vide
       | Couple(c,_) -> Code(c, l_bit)::l_code )
@@ -148,6 +148,7 @@ construireCode (Feuille(Couple('t', 8)));;
 
 let texte = lire_fichier "data/abracadabra.txt";;
 let histogramme = creer_histo texte (gen_list_occ (texte));;
+let histogramme = insert_histo (Couple('\255',1)) histogramme;;
 let sorted_histogramme = sort_histo histogramme;;
 let liste_arbre =  conversion_histoToArbre sorted_histogramme;;
 let huff_tree = construire_Huffman liste_arbre;;
