@@ -1,8 +1,7 @@
 
 (* Appel des bibliothèques *)
-#use "fichier_lib.ml";;
 #use "Huffman.ml";;
-#use "bitio.ml";;
+#use "lib/bitio.ml";;
 
 
 

@@ -7,34 +7,12 @@ type histo = Vide | Couple of (char * int );;
 (* Fonctions de recherche et de nombre d'occurrences *)
 
 
-(* Test si un élément est dans la liste *)
-let rec mem x l = match l with
-  | [] -> false
-  | t::q -> if x = t
-    then true
-    else mem x q;;
-
 (* Verifie si une lettre est dans l'histogramme *)
 let rec mem_histo e l = match l with
   | [] -> false
   | t::q -> (match t with
       | Vide -> mem_histo e q
       | Couple(c,_) -> if c = e then true else mem_histo e q);;
-
-(*Renvoie le nombre d'occurrence d'une lettre dans une liste*)
-let  nb_occ a l =
-  let rec nb_occ_aux a l n =  match l with
-  | [] -> n
-  | t::q -> let m = n+1 in if a = t  then nb_occ_aux a q m else nb_occ_aux a q n
-  in (nb_occ_aux a l 0);;
-
-
-(* Génère une liste de toutes les lettres qui sont présentes dans le texte *)
-let gen_list_occ txt = 
-  let rec gen_list_aux txt occ = match txt with
-    | [] -> occ
-    | t::q -> if(mem t occ) then gen_list_aux q occ else gen_list_aux q (t::occ)
-  in List.rev(gen_list_aux txt []);;
 
 
 let rec succ_histo ch l_histo = match l_histo with
