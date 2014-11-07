@@ -1,4 +1,15 @@
+(**********************************************
+        Projet OCAML S5
 
+  Auteurs : Luxon JEAN-PIERRE & Kahina RAHANI
+
+ **********************************************)
+
+(***********************************************************
+  Fichier : Huistogramme.ml
+
+  Definition des fonctions de gestion de l'histogramme
+ ***********************************************************)
 
 
 (*On a définit un type décrivant l'histogramme *)

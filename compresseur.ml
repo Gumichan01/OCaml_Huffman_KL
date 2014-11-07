@@ -1,3 +1,15 @@
+(**********************************************
+        Projet OCAML S5
+
+  Auteurs : Luxon JEAN-PIERRE & Kahina RAHANI
+
+ **********************************************)
+
+(*************************************
+  Fichier : compresseur.ml
+
+  Fichier en charge de la compression
+  ************************************)
 
 (* Appel des bibliothèques *)
 #use "Huffman.ml";;
