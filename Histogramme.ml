@@ -45,14 +45,18 @@ let rec insert_histo x l = match l with
       | Couple(_,v1),Couple(_,v2) -> if v1 = v2 then (x::t::q)
 	else if v1 > v2 then t::insert_histo x q else (x::t::q));;
 
+type 'a option =  Some of 'a | None ;;
 
 (* On crée l'histogramme dynamiquement en parcourant le fichier *)
 let creer_histo entree =
   let rec creer_histo_aux entree l_histo = 
+    let ch =
     try
-       let ch  = input_char(entree) 
-       in if mem_histo ch l_histo then creer_histo_aux entree (succ_histo ch l_histo)  else creer_histo_aux entree ((Couple(ch,1))::l_histo)
-    with End_of_file -> l_histo 
+        Some(input_char(entree))
+    with End_of_file -> None 
+    in match ch with
+      | None -> l_histo 
+      | Some(c) ->  if mem_histo c l_histo then creer_histo_aux entree (succ_histo c l_histo)  else creer_histo_aux entree ((Couple(c,1))::l_histo) (* -> Option à mettre *)
   in creer_histo_aux entree [];;
 
 
