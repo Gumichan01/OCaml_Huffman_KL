@@ -21,16 +21,35 @@ Roadmap projet OCaml - Compression de Huffman
 
 ==== DECOMPRESSION ====
 
- -> Lire les octets magiques et vérifier | TODO
+ -> Lire les octets magiques et vérifier | DONE
 
- -> Faire la lecture de l'arbre | TODO
+ -> Faire la lecture de l'arbre | DONE
 
- -> Lire les codes et ecrire dans le fichier texte décompressé | TODO
+ -> Lire les codes et ecrire dans le fichier texte décompressé | DONE
 
- -> Vérifier la validité du fichier texte -> $ md5sum sur le terminal | TODO
+ -> Vérifier la validité du fichier texte -> $ md5sum sur le terminal | DONE
 
- -> Tester l'interopérabilité avec le compresseur du prof | TODO
+ -> Tester l'interopérabilité avec le compresseur du prof | DONE
 
+ -> DEBUG : vérifier l'ignorance du programme vis-à-vis des octets à ignorer
+
+
+==== Programme final  ====
+
+ -> Compiler les fichier .ml pour avoir les fichiers module .cmo | TODO
+
+ -> Faire les fichiers .mli | TODO
+
+ -> Faire le main.ml (gestion de paramètre positionnel ('-c', '-d, '-v', '-i' )) | TODO
+	-c : compresser
+	-x : extraire
+	(Autres options possibles : Voir extension)
+ 	-v : mettre le md5 du fichier (ne marche que si '-c' est présent)
+	-i : mettre les informations relatives au fichier à compresser (tout comme '-v', ne marche qu'en présence de '-c')
+	-C : mettre des commentaires (même condition que pour '-v' et '-i')
+
+
+DANS TOUS LES CAS, TESTER L'INTEROPERABILITE
 
 
 ==== EXTENSIONS ====
@@ -39,6 +58,8 @@ Roadmap projet OCaml - Compression de Huffman
 
  - Gestion de l'Unicode (UTF-8)
 
- - Intégration de la checksum (md5) du fichier avant compression
+ - Intégration de la checksum (md5) du fichier avant compression (avant l'arbre)
 
+ - Mettre les informations relatives au fichier (droits, propriétaires, date d'acces/modif : avant, ou bien après l'arbre ? ) 
 
+ - Prise en charge des commentaires (après l'arbre)
