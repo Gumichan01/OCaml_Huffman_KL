@@ -18,6 +18,7 @@ Roadmap projet OCaml - Compression de Huffman
 
  -> Optimisation : Construire dynamiquement l'histogramme dès le parcours du fichier | DONE
 
+ -> DEBUG : Re-modifier la fonctions de création d'histogramme (lecture ligne par ligne) | DOING
 
 ==== DECOMPRESSION ====
 
