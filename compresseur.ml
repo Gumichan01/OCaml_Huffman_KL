@@ -59,10 +59,8 @@ let rec ecrire_code sortie code entree =
 (* Stocke l'arbre dans le fichier *)
 let rec stockage_arbre sortie tree = match tree with
   | Nil ->() (*output_bit sortie 0; output_bit_byte sortie 255; output_bit sortie 1*)
-  | Feuille(f) -> (match f with
-      | Vide -> failwith "Feuille Vide : echec de la compression"
-      | Couple(c,n) -> output_bit sortie 0 ; output_bit_byte sortie (Char.code c); 
-	if c = '\255' then output_bit sortie 1 else () )
+  | Feuille(Couple(c,n)) -> output_bit sortie 0 ; output_bit_byte sortie (Char.code c); 
+    if c = '\255' then output_bit sortie 1 else ()
   | Node(_,g,d) -> output_bit sortie 1; stockage_arbre sortie g; stockage_arbre sortie d;;
 
 
@@ -93,14 +91,6 @@ let compression str_file =
 		    close_in entree; close_out_bit sortie;; (*Fermeture du fichier*)
 
 
-(*compression "data/abracadabra.txt";;*)
-(*compression "/home/luxon/cours/ocaml/exe_dir/test_en";;*)
-(*compression "duo.txt";;*)
 compression "fichier_lib.ml";;
-(*compression "/home/luxon/cours/ocaml/exe_dir/toto.txt";;*)
-
-(*print_string "hello world";;*)
-
-
-
+(*compression "mots";*)
 
