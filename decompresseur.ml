@@ -55,7 +55,6 @@ let ecrire_dans_fichier entree arbre sortie =
   let rec ecrire_dans_fichier_aux entree arbre root sortie =
     (match arbre with (* On regarde si on a une feuille *)
       | Nil -> failwith "Arbre non valide " (* Interdit, echec *)
-      | Feuille(Vide) -> failwith "ERREUR" (* Interdit , echec *)
       | Feuille(Couple(c,_)) -> (* OK *)
 	(if c = '\255' (* Fin du fichier *)
 	 then raise Exit
@@ -107,3 +106,4 @@ let decompression str_file =
 decompression "ab.hf";;
 decompression "fichier_lib.ml.hf";;
 decompression "projet_ocaml_s5.tar.gz";;
+decompression "data/bla.hf";;

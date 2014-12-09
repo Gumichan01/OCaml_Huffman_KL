@@ -114,28 +114,17 @@ let rec construire_Huffman = function
 
 type codeCompress = Code of (char * int list);;
 
-Code('a', [1;0]);;
+(*Code('a', [1;0]);;*)
 
 
-let construireCode arbre =
+let construireCode arbre tab =
   let rec construireCode_aux arbre l_bit l_code = match arbre with
-  | Nil -> raise Arbre_vide
-  | Feuille f ->(match f with
-      | Couple(c,_) -> Code(c, l_bit)::l_code )
-  | Node(_,g,d) -> let lb = l_bit in let l_code_bis = construireCode_aux g (lb@[0]) l_code in
-		   (l_code_bis@(construireCode_aux d (l_bit@[1]) l_code))
-  in construireCode_aux arbre [] [];;
+    | Nil -> raise Arbre_vide
+    | Feuille(Couple(c,_))-> l_code.(int_of_char c) <- l_bit;
+    | Node(_,g,d) -> let lb = l_bit in (construireCode_aux g (lb@[0]) l_code); 
+		     (construireCode_aux d (l_bit@[1]) l_code )
+  in construireCode_aux arbre [] tab;;
 
-construireCode Nil;;
-construireCode (Feuille(Couple('t', 8)));;
 
-let entree = open_in "data/abracadabra.txt";;
-let histogramme = creer_histo entree;;
-let histo2 = insert_histo (Couple('\255',1)) histogramme;;
-let sorted_histogramme = sort_histo histo2;;
-let liste_arbre =  conversion_histoToArbre sorted_histogramme;;
-let huff_tree = construire_Huffman liste_arbre;;
 
-let result = construireCode huff_tree;;
 
-close_in entree;;
