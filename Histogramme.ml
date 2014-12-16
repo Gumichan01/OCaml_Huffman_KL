@@ -17,15 +17,16 @@
 
 type histo = Couple of (int * int);;
 
-(* Mets à jour la valeur d'un octet ("caractère") de l'histogramme *)
+
 let rec succ_histo oc l_histo = 
   if (oc < 0) || (oc > 255)
   then
+    ()
+  else
+    l_histo.(oc) <- (l_histo.(oc) + 1);;
 
 
-(*Tri de l'histogramme *)
 
-(*Fonction insert_histo *)
 let rec insert_histo x l = match l with
   | [] -> [x]
   | t::q -> (match x,t with
@@ -37,7 +38,7 @@ let rec insert_histo x l = match l with
 	else (x::t::q));;
 
 
-(* Fonction sort_histo *)
+
 let rec sort_histo l = match l with
   | [] -> l
   | [x] -> [x]
@@ -46,7 +47,7 @@ let rec sort_histo l = match l with
 
 type 'a option =  Some of 'a | None ;;
 
-(* On crée l'histogramme dynamiquement en parcourant le fichier *)
+
 let creer_histo entree =
   let rec creer_histo_aux entree l_histo = 
     let ch =
@@ -61,7 +62,6 @@ let creer_histo entree =
   in creer_histo_aux entree (Array.make 256 0);;
 
 
-(* Convertir un tableau en une liste *)
 let convertir tab =
   let rec convertir_aux tab l i =
     if( i < Array.length tab )

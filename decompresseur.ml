@@ -25,7 +25,10 @@ let creer_liste_magique entree =
     with End_of_file -> None
     in match ch with
       | None -> l
-      | Some(i) -> if (x <= 4) then  creer_liste_magique_aux entree (l@[i]) (x+1) else l
+      | Some(i) -> 
+	if (x <= 4) 
+	then  creer_liste_magique_aux entree (l@[i]) (x+1) 
+	else l
   in creer_liste_magique_aux entree [] 1;;
 
 
@@ -41,15 +44,17 @@ let rec comparaison l1 l2 = match l1,l2 with
 let rec construire_arbreH entree = 
   let bit_lu = input_bit entree
   in if bit_lu = 0 
-    then (let ch = (char_of_int (input_bit_byte entree))
-	 in 
-	 (match ch with
-	   | '\255' -> ignore (input_bit entree);Feuille(Couple(ch,0))
-	   | _ -> Feuille(Couple(ch,0)) ))
+    then 
+      (let ch = input_bit_byte entree in 
+       (match ch with
+	 | '\255' -> ignore (input_bit entree);Feuille(Couple(ch,0))
+	 | _ -> Feuille(Couple(ch,0)) 
+       )
+      )
     else
-      let tmp = (construire_arbreH entree)
-      in let tmp1 = (construire_arbreH entree)
-      in fusion tmp tmp1;;
+      let tmp = (construire_arbreH entree) in 
+      let tmp1 = (construire_arbreH entree) in 
+      fusion tmp tmp1;;
 
 let ecrire_dans_fichier entree arbre sortie = 
   let rec ecrire_dans_fichier_aux entree arbre root sortie =
@@ -59,7 +64,8 @@ let ecrire_dans_fichier entree arbre sortie =
 	(if c = '\255' (* Fin du fichier *)
 	 then raise Exit
 	 else  (output_char sortie c; ecrire_dans_fichier_aux entree root root sortie;) )
-      | Node(_,_,_) -> ());
+      | Node(_,_,_) -> ()
+    );
     let bit =
     try
        Some(input_bit entree)
