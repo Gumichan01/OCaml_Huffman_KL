@@ -1,0 +1,47 @@
+Now, that's not to say these developers are in the wrong at all. 
+For a beginner however, these terms can be very daunting and confusing. 
+For me, I thought I shouldn't really pre-visualize at all and that everything would sort itself out eventually (Boy how wrong was I). 
+In this article I plan to explain to you how I pre-visualize my projects, 
+how much you should really be pre-visualizing, and why it's important. So let's jump right in with the third one: Why Pre-Visualizing Important?
+
+Pre-Visualizing allows you to plan how your classes interact. Imagine this: 
+In many projects, your Collision and Physics interact, and almost all of your 
+classes have to access a singular Map for the level you're on. How they will interact and how the map will be handled must be thought out so that the code you write at the be
+ginning will be prepared for how the other classes use the Map. This must be sorted out in pre-visualization because you write certain code (classes) at different times, which means if you don't think about this you'll end up re-writing enormous amounts of code.
+Pre-Visualization also defines project scope. Knowing what you plan to accomplish and what 
+accomplishing that includes helps with development (For one thing, you will be able to gauge your progress and define what needs to be done next). 
+When making a Side-Scroller, understanding the scope of the enemies A.I. is important so you'll know the work involved. If you make simple A.I., you can compensate with adding bows to a Side-Scroller 
+that was originally only going to have swords. Now that I've made that analogy however, let us move on to another important topic involving why pre-visualizing is important: Understanding the Mechanics of your game.
+
+This ties into project scope. The mechanics are part of project scope because 
+the more complex the mechanics the more time it will take to implement them. 
+Imagine this: Having a Bow involves a lot more coding 
+(Handling projectiles shot, their collision, how fast they move, animation for them, etc.). 
+So at project scope, you define if you'll have a bow or if you'll only have swords. This lets you only plan for swords. The first part of planning should always be defining your scope.
+
+Now on to the second part: How much you should be pre-visualizing. 
+My general rule is figuring out your hierarchy and how your classes will interact, 
+however I leave out the actual coding details. I know how to code, and a large part of my actual 
+software-design is figuring out how to solve problems or thinking about the best way to solve a problem. 
+Figuring out what those problems are and how you'll solve them is pre-visualization. 
+Actually planning out my code, what my functions will pass in, etc. 
+shouldn't be defined in pre-visualization (Except for small, single-task programs 
+like converting one form of a linear equation to another form.). 
+Solving these problems before you start coding make sure that all the 
+code you right already had that problem in mind (So when a problem turns up or when you are implementing something, you don't have to scrap existing code).
+
+Some problems are bound to be encountered while coding, and trying to write down 
+and fix every minute detail of your program is an example of bad pre-visualization. 
+You can't anticipate everything, however anticipating what you can (AKA the bigger problems and ideas) will help exponentially.
+
+Now, what you've all been waiting for: How do I pre-visualize? It's simple really. 
+I get a notebook, write down the name of my project. I define the scope, the mechanics, 
+and then take one or two pages in the notebook I label "Classes". I figure out the basic 
+classes and write down their responsibility (Defining responsibility make sure you 
+understand what all of your classes are actually supposed to be doing). Then, I take maybe a page for each class or important mechanic and think about it hard. I think about how 
+it'll handle it's responsibilities and how it will interact with other classes. The key word here is interaction. Interaction is a huge part of software design (Especially video game software design.). This allows me to anticipate the basic structure of my code and the problems I'll run into. Then for a day or two I'll read over what I have and reflect. After I do this, I take my journal to the computer and start coding. This whole process is one to two weeks.
+
+The main point of this article was to stress how important pre-visualization is to beginners. Now, it might just be tic-tac-toe, however still get in the habit of pre-visualizing. It'll pay off in the long run.
+
+If you enjoyed this article, please post down below. If you have any recommendation about how you plan or any corrections, feel free to share them with everyone. Cheers :)!
+ 
