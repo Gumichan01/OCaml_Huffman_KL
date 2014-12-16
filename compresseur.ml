@@ -14,7 +14,6 @@
 (* Appel des bibliothèques *)
 open Histogramme;;
 open Huffman;;
-open Bitio;;
 
 (*****************************************************
                 Ecriture dans le fichier
@@ -34,7 +33,7 @@ let rec isBit = function
 (* On injecte bit à bit les éléments de la liste *)
 let rec injection_bit sortie = function
   | [] -> ()
-  | t::q -> output_bit sortie t;injection_bit sortie q ;;
+  | t::q -> Bitio.output_bit sortie t;injection_bit sortie q ;;
 
 (* On met le code compressé du texte dans le nouveau fichier *)
 (* TODO : améliorer ecrire_code *)
@@ -59,16 +58,16 @@ let rec ecrire_code sortie code entree =
 (* Stocke l'arbre dans le fichier *)
 let rec stockage_arbre sortie tree = match tree with
   | Nil ->() (*output_bit sortie 0; output_bit_byte sortie 255; output_bit sortie 1*)
-  | Feuille(Couple(c,n)) -> output_bit sortie 0 ; output_bit_byte sortie c; 
-    if c = 255 then output_bit sortie 1 else ()
-  | Node(_,g,d) -> output_bit sortie 1; stockage_arbre sortie g; stockage_arbre sortie d;;
+  | Feuille(Couple(c,n)) -> Bitio.output_bit sortie 0 ; Bitio.output_bit_byte sortie c; 
+    if c = 255 then Bitio.output_bit sortie 1 else ()
+  | Node(_,g,d) -> Bitio.output_bit sortie 1; stockage_arbre sortie g; stockage_arbre sortie d;;
 
 
 (* Met n bits après le code compréssé pour s'aligner à la frontière d'octets *)
 let put_bits sortie n =
   for i = 1 to n 
   do 
-    output_bit sortie 0 
+    Bitio.output_bit sortie 0 
   done;;
 
 (* La fonction qui fait la compression, elle prend en parametre une chaine de caractères *)
@@ -79,23 +78,19 @@ let compression str_file =
 	in let sorted_histogramme = sort_histo histogramme (* Tri de l'histogramme*)
 	   in let liste_arbre = conversion_histoToArbre sorted_histogramme (* Création forêt *)
 	      in let huff_tree = construire_Huffman liste_arbre (* Forêt -> arbre Huffman *)
-		 in let sortie = open_out_bit (str_file^".hf") (* Ouverture fichier .hf *)
+		 in let sortie = Bitio.open_out_bit (str_file^".hf") (* Ouverture fichier .hf *)
 		 and tab = Array.make 256 [0] 
 		    in construireCode huff_tree tab;
-		    output_bit_byte sortie 135; output_bit_byte sortie 74; (* val magiques*)
-		    output_bit_byte sortie 31; output_bit_byte sortie 72;
-		    output_bit_byte sortie 0; stockage_arbre sortie huff_tree; (*Octet + arbre*)
+		    Bitio.output_bit_byte sortie 135; Bitio.output_bit_byte sortie 74; (* val magiques*)
+		    Bitio.output_bit_byte sortie 31; Bitio.output_bit_byte sortie 72;
+		    Bitio.output_bit_byte sortie 0; stockage_arbre sortie huff_tree; (*Octet + arbre*)
 		    seek_in entree 0;
 		    ecrire_code sortie tab entree; (* On met le code compressé + EOF *)
 		    let m = ((sortie.len + 1) mod 8) in if m <> 0 then put_bits sortie (8-m);
-		    output_bit_byte sortie 0; (* Octet m: içi 0 *)
-		    close_in entree; close_out_bit sortie;; (*Fermeture du fichier*)
+		    Bitio.output_bit_byte sortie 0; (* Octet m: içi 0 *)
+		    close_in entree; Bitio.close_out_bit sortie;; (*Fermeture du fichier*)
 
 
-(*compression "data/abracadabra.txt";;*)
-compression "fichier_lib";;
-(*compression "data/unicode.txt";;*)
-(*compression "mots";;*)
 
 (*let entree = open_in "mots";;
 let histogramme = convertir (creer_histo entree);;

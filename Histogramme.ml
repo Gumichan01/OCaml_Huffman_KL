@@ -9,38 +9,19 @@
  **********************************************)
 
 (***********************************************************
-  Fichier : Huistogramme.ml
+  Fichier : Histogramme.ml
 
   Definition des fonctions de gestion de l'histogramme
  ***********************************************************)
 
 
-(*On a définit un type décrivant l'histogramme *)
-
-type histo = Couple of (int * int );;
-
-(* Fonctions de recherche et de nombre d'occurrences *)
-
-
-(* Verifie si une lettre est dans l'histogramme *)
-(*let rec mem_histo e l = match l with
-  | [] -> false
-  | t::q -> (match t with
-      | Couple(c,_) -> if c = e then true else mem_histo e q);;*)
-
-
-(* [|1;2;3;4|];; *)
+type histo = Couple of (int * int);;
 
 (* Mets à jour la valeur d'un octet ("caractère") de l'histogramme *)
 let rec succ_histo oc l_histo = 
   if (oc < 0) || (oc > 255)
   then
-    ()
-  else
-    l_histo.(oc) <- (l_histo.(oc) + 1);;
 
-(*let tab = [|0;0;0;0;0|]
-in succ_histo 2 tab; tab;;*)
 
 (*Tri de l'histogramme *)
 
@@ -79,6 +60,7 @@ let creer_histo entree =
 	creer_histo_aux entree l_histo)
   in creer_histo_aux entree (Array.make 256 0);;
 
+
 (* Convertir un tableau en une liste *)
 let convertir tab =
   let rec convertir_aux tab l i =
@@ -88,14 +70,6 @@ let convertir tab =
       else convertir_aux tab l (i+1)
     else l
   in convertir_aux tab [] 0;;
-
-(*convertir [|0;5;3;1;95;8245;1;364;25;0;78;6;2;0;52;42;0;0;4|];;*)
-
-
-(*let fp = open_in "mots";;
-let h = creer_histo fp;;
-convertir h;;
-close_in fp;;*)
 
 
 
