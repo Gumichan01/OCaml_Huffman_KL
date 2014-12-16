@@ -11,10 +11,10 @@
   Definition des fonctions de gestion de l'arbre de Huffman
  ***********************************************************)
 
+open Histogramme;;
 
-#use "Histogramme.ml";;
 
-(* Type Arbre de Huffman*)
+(* Type Arbre de Huffman *)
 
 type arbreH = 
   | Nil
@@ -112,7 +112,7 @@ let rec construire_Huffman = function
 
 (* On définit un type algébrique qui va stocker la lettre et son code associé *)
 
-type codeCompress = Code of (char * int list);;
+type codeCompress = Code of (int * int list);;
 
 (*Code('a', [1;0]);;*)
 
@@ -120,7 +120,7 @@ type codeCompress = Code of (char * int list);;
 let construireCode arbre tab =
   let rec construireCode_aux arbre l_bit l_code = match arbre with
     | Nil -> raise Arbre_vide
-    | Feuille(Couple(c,_))-> l_code.(int_of_char c) <- l_bit;
+    | Feuille(Couple(c,_))-> l_code.(c) <- l_bit;
     | Node(_,g,d) -> let lb = l_bit in (construireCode_aux g (lb@[0]) l_code); 
 		     (construireCode_aux d (l_bit@[1]) l_code )
   in construireCode_aux arbre [] tab;;

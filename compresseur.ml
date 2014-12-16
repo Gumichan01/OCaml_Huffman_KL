@@ -12,10 +12,9 @@
   ************************************)
 
 (* Appel des bibliothèques *)
-#use "Huffman.ml";;
-#use "lib/bitio.ml";;
-
-
+open Histogramme;;
+open Huffman;;
+open Bitio;;
 
 (*****************************************************
                 Ecriture dans le fichier
@@ -43,13 +42,13 @@ let rec ecrire_code sortie code entree =
   let ch =
     try
       begin
-	Some(input_char entree)
+	Some(input_byte entree)
       end
     with End_of_file -> None
   in match ch with
-    | None -> injection_bit sortie (getCode (int_of_char '\255') code)
+    | None -> injection_bit sortie (getCode 255 code)
     | Some(c) -> 
-      let bit_code = getCode (int_of_char c) code
+      let bit_code = getCode c code
       in if isBit bit_code
 	then
 	  (injection_bit sortie bit_code ;ecrire_code sortie code entree )
@@ -60,8 +59,8 @@ let rec ecrire_code sortie code entree =
 (* Stocke l'arbre dans le fichier *)
 let rec stockage_arbre sortie tree = match tree with
   | Nil ->() (*output_bit sortie 0; output_bit_byte sortie 255; output_bit sortie 1*)
-  | Feuille(Couple(c,n)) -> output_bit sortie 0 ; output_bit_byte sortie (Char.code c); 
-    if c = '\255' then output_bit sortie 1 else ()
+  | Feuille(Couple(c,n)) -> output_bit sortie 0 ; output_bit_byte sortie c; 
+    if c = 255 then output_bit sortie 1 else ()
   | Node(_,g,d) -> output_bit sortie 1; stockage_arbre sortie g; stockage_arbre sortie d;;
 
 
@@ -76,7 +75,7 @@ let put_bits sortie n =
 let compression str_file = 
   let entree = open_in str_file (* On ouvre le fichier *)
   in let histo1 = convertir (creer_histo entree) (* Création histogramme *)
-     in let histogramme = insert_histo (Couple('\255',1)) histo1 (* Ajout du caractère EOF *)
+     in let histogramme = insert_histo (Couple(255,1)) histo1 (* Ajout du caractère EOF *)
 	in let sorted_histogramme = sort_histo histogramme (* Tri de l'histogramme*)
 	   in let liste_arbre = conversion_histoToArbre sorted_histogramme (* Création forêt *)
 	      in let huff_tree = construire_Huffman liste_arbre (* Forêt -> arbre Huffman *)
@@ -94,11 +93,11 @@ let compression str_file =
 
 
 (*compression "data/abracadabra.txt";;*)
-(*compression "fichier_lib";;*)
+compression "fichier_lib";;
 (*compression "data/unicode.txt";;*)
-compression "mots";;
+(*compression "mots";;*)
 
-let entree = open_in "mots";;
+(*let entree = open_in "mots";;
 let histogramme = convertir (creer_histo entree);;
 let histo2 = insert_histo (Couple('\255',1)) histogramme;;
 let sorted_histogramme = sort_histo histo2;;
@@ -113,4 +112,4 @@ stockage_arbre s huff_tree;;
 ecrire_code s tab entree;; (*BUG *)
 
 close_in entree;;
-close_out_bit s;;
+close_out_bit s;;*)

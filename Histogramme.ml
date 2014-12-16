@@ -1,3 +1,6 @@
+
+
+
 (**********************************************
         Projet OCAML S5
 
@@ -13,7 +16,8 @@
 
 
 (*On a définit un type décrivant l'histogramme *)
-type histo = Couple of (char * int );;
+
+type histo = Couple of (int * int );;
 
 (* Fonctions de recherche et de nombre d'occurrences *)
 
@@ -35,8 +39,8 @@ let rec succ_histo oc l_histo =
   else
     l_histo.(oc) <- (l_histo.(oc) + 1);;
 
-let tab = [|0;0;0;0;0|]
-in succ_histo 2 tab; tab;;
+(*let tab = [|0;0;0;0;0|]
+in succ_histo 2 tab; tab;;*)
 
 (*Tri de l'histogramme *)
 
@@ -66,12 +70,12 @@ let creer_histo entree =
   let rec creer_histo_aux entree l_histo = 
     let ch =
     try
-        Some(input_char(entree))
+        Some(input_byte(entree))
     with End_of_file -> None 
     in match ch with
       | None -> l_histo 
       | Some(c) -> 
-	(succ_histo (int_of_char c) l_histo; 
+	(succ_histo c l_histo; 
 	creer_histo_aux entree l_histo)
   in creer_histo_aux entree (Array.make 256 0);;
 
@@ -80,18 +84,18 @@ let convertir tab =
   let rec convertir_aux tab l i =
     if( i < Array.length tab )
     then if( tab.(i) > 0 ) 
-      then convertir_aux tab ((Couple((char_of_int i),tab.(i)))::l) (i+1)
+      then convertir_aux tab ((Couple(i,tab.(i)))::l) (i+1)
       else convertir_aux tab l (i+1)
     else l
   in convertir_aux tab [] 0;;
 
-convertir [|0;5;3;1;95;8245;1;364;25;0;78;6;2;0;52;42;0;0;4|];;
+(*convertir [|0;5;3;1;95;8245;1;364;25;0;78;6;2;0;52;42;0;0;4|];;*)
 
 
-let fp = open_in "mots";;
+(*let fp = open_in "mots";;
 let h = creer_histo fp;;
 convertir h;;
-close_in fp;;
+close_in fp;;*)
 
 
 
