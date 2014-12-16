@@ -51,27 +51,7 @@ let rec insert_tree a l = match l with
 	else t::(insert_tree a q))
 ;;
 
-(* Test *)
 
-(*insert_tree Nil [];;
-insert_tree (Feuille(Couple('t', 8))) [];;
-insert_tree (Feuille(Couple('a', 4))) [Nil];;
-insert_tree Nil [(Feuille(Couple('H', 2)))] ;;
-
-insert_tree (Feuille(Vide)) [(Feuille(Vide))];;
-insert_tree (Feuille(Vide)) [(Feuille(Couple('s', 1)))];;
-insert_tree (Feuille(Couple('t', 1))) [(Feuille(Vide))];;
-
-insert_tree (Feuille(Couple('t', 8))) [(Feuille(Couple('f', 3)))];;
-insert_tree (Feuille(Couple('t', 2))) [(Feuille(Couple('f', 3)))];;
-
-insert_tree (Feuille(Couple('t', 12))) [(Node(10,(Feuille(Couple('A', 7))),Feuille(Couple('t',3)) ))];;
-insert_tree (Feuille(Vide)) [(Node(9,(Feuille(Couple('A', 7))),Feuille(Couple('t',3)) ))];;
-
-insert_tree (Node(10,(Feuille(Couple('A', 7))),Feuille(Couple('t',3)) )) [(Feuille(Couple('t', 1)))];;
-insert_tree (Node(10,(Feuille(Couple('A', 7))),Feuille(Couple('t',3)) )) [(Feuille(Vide))];;
-
-insert_tree (Node(10,(Feuille(Couple('A', 7))),Feuille(Couple('t',3)) )) [(Node(12,(Feuille(Couple('A', 6))),Feuille(Couple('t',6)) ))];;*)
 
 exception Arbre_vide;;
 exception Histo_vide;;
@@ -113,8 +93,6 @@ let rec construire_Huffman = function
 (* On définit un type algébrique qui va stocker la lettre et son code associé *)
 
 type codeCompress = Code of (int * int list);;
-
-(*Code('a', [1;0]);;*)
 
 
 let construireCode arbre tab =
