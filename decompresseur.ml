@@ -37,7 +37,7 @@ let creer_liste_magique entree =
   in creer_liste_magique_aux entree [] 1;;
 
 
-(* Fonction qui compare deux liste *)
+
 let rec comparaison l1 l2 = match l1,l2 with
   | [],[] -> true
   | [],_ -> false
@@ -45,7 +45,7 @@ let rec comparaison l1 l2 = match l1,l2 with
   | a1::q1,a2::q2 -> (a1 = a2) && comparaison q1 q2;;
 
 
-(* Construit l'arbre à partir des bis - TODO, gérer l'exception End_of_file *)
+
 let rec construire_arbreH entree = 
   let bit_lu = Bitio.input_bit entree
   in if bit_lu = 0 
