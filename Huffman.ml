@@ -11,6 +11,7 @@
   Definition des fonctions de gestion de l'arbre de Huffman
  ***********************************************************)
 
+(*#use "Histogramme.ml";;*)
 open Histogramme;;
 
 

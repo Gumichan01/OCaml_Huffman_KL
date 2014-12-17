@@ -12,6 +12,9 @@
   ************************************)
 
 
+(* #use "Histogramme.ml";;
+ #use "Huffman.ml";;*)
+
 open Histogramme;;
 open Huffman;;
 
@@ -83,6 +86,6 @@ let compression str_file =
   close_in entree; Bitio.close_out_bit sortie;;
 
 
-compression "data/mots";;
+compression "data/abracadabra.txt";;
 
 

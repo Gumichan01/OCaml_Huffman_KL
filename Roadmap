@@ -32,17 +32,17 @@ Roadmap projet OCaml - Compression de Huffman
 
  -> Tester l'interopérabilité avec le compresseur du prof | DONE
 
- -> DEBUG : vérifier l'ignorance du programme vis-à-vis des octets à ignorer
+ -> DEBUG : vérifier l'ignorance du programme vis-à-vis des octets à ignorer | DONE
 
 
 ==== Programme final  ====
 
- -> Compiler les fichier .ml pour avoir les fichiers module .cmo | TODO
+ -> Compiler les fichier .ml pour avoir les fichiers module .cmo | DOING
 
- -> Faire les fichiers .mli | TODO
+ -> Faire les fichiers .mli | DOING
 
  -> Faire le main.ml (gestion de paramètre positionnel ('-c', '-d, '-v', '-i' )) | TODO
-	-c : compresser
+	Pas d'option -> compresser par défaut
 	-x : extraire
 	(Autres options possibles : Voir extension)
  	-v : mettre le md5 du fichier (ne marche que si '-c' est présent)
@@ -57,10 +57,10 @@ DANS TOUS LES CAS, TESTER L'INTEROPERABILITE
 
  Extensions possibles : 
 
- - Gestion de l'Unicode (UTF-8)
-
  - Intégration de la checksum (md5) du fichier avant compression (avant l'arbre)
 
- - Mettre les informations relatives au fichier (droits, propriétaires, date d'acces/modif : avant, ou bien après l'arbre ? ) 
+ - Mettre les informations relatives au fichier 
+	(droits, propriétaires, date d'acces/modif : 
+		avant l'arbre, ou bien après le contenu ? ) 
 
- - Prise en charge des commentaires (après l'arbre)
+ - Prise en charge des commentaires (après le contenu) !!
