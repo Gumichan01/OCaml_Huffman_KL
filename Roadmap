@@ -41,7 +41,7 @@ Roadmap projet OCaml - Compression de Huffman
 
  -> Faire les fichiers .mli | DOING
 
- -> Faire le main.ml (gestion de paramètre positionnel ('-c', '-d, '-v', '-i' )) | TODO
+ -> Faire le main.ml (gestion de paramètre positionnel ('-c', '-d, '-v', '-i' )) | TODO LAST
 	Pas d'option -> compresser par défaut
 	-x : extraire
 	(Autres options possibles : Voir extension)
