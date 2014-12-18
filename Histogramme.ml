@@ -1,8 +1,6 @@
 
-
-
 (**********************************************
-        Projet OCAML S5
+        Projet OCaml S5
 
   Auteurs : Luxon JEAN-PIERRE & Kahina RAHANI
 

@@ -37,7 +37,7 @@ Roadmap projet OCaml - Compression de Huffman
 
 ==== Programme final  ====
 
- -> Compiler les fichier .ml pour avoir les fichiers module .cmo | DOING
+ -> Compiler les fichiers .ml pour avoir les fichiers module .cmo | DOING
 
  -> Faire les fichiers .mli | DOING
 
@@ -46,7 +46,6 @@ Roadmap projet OCaml - Compression de Huffman
 	-x : extraire
 	(Autres options possibles : Voir extension)
  	-v : mettre le md5 du fichier (ne marche que si '-c' est présent)
-	-i : mettre les informations relatives au fichier à compresser (tout comme '-v', ne marche qu'en présence de '-c')
 	-C : mettre des commentaires (même condition que pour '-v' et '-i')
 
 
@@ -58,9 +57,5 @@ DANS TOUS LES CAS, TESTER L'INTEROPERABILITE
  Extensions possibles : 
 
  - Intégration de la checksum (md5) du fichier avant compression (avant l'arbre)
-
- - Mettre les informations relatives au fichier 
-	(droits, propriétaires, date d'acces/modif : 
-		avant l'arbre, ou bien après le contenu ? ) 
 
  - Prise en charge des commentaires (après le contenu) !!
