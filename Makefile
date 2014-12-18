@@ -1,7 +1,7 @@
 
 # Edition des liens et creation de l'executable
-huff_kl : Histogramme.cmo Huffman.cmo bitio.cmo compresseur.cmo
-	ocamlc -o huff_kl Histogramme.cmo Huffman.cmo bitio.cmo compresseur.cmo
+huff_kl : Histogramme.cmo Huffman.cmo bitio.cmo compresseur.cmo main.cmo
+	ocamlc -o huff_kl Histogramme.cmo Huffman.cmo bitio.cmo compresseur.cmo main.cmo
 
 
 #Compilation implantation module Histogramme
@@ -36,6 +36,14 @@ compresseur.cmo :  compresseur.ml  compresseur.cmi
 compresseur.cmi :  compresseur.mli
 	ocamlc -c compresseur.mli 
 
+
+# Compilation implantation module main
+main.cmo : main.ml main.cmi
+	ocamlc -c main.ml
+
+# Compilation interface module main
+main.cmi : main.mli
+	ocamlc -c main.mli
 
 clean:
 	rm -rf huff-kl *.cmi *.cmo *~

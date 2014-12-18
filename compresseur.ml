@@ -87,6 +87,6 @@ let compression str_file =
   close_in entree; Bitio.close_out_bit sortie;;
 
 
-compression "data/abracadabra.txt";;
+(*compression "data/abracadabra.txt";;*)
 
 

@@ -40,5 +40,5 @@ let () =
   then
     usage Sys.argv.(0)
   else
-    print_string "OK";;
+    print_string "OK\n";;
 
