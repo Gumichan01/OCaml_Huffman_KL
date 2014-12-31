@@ -1,7 +1,21 @@
 Projet OCAML S5
 
-Auteurs : Luxon JEAN-PIERRE
-	  Kahina RAHANI
+Auteurs : Kahina RAHANI
+	  Luxon JEAN-PIERRE
+
+Comment utiliser le programme ?
+
+ - Saisir la command suivante :  $make
+ - executer le programme huff_kl
 
 
-Ce projet consiste à créer un programme assurant la compression et la décompression de fichier, en utilisant l'algorithme de Huffman.
+ usage : 
+
+  ./huff_kl [-c|x] [nom_fichier] 
+  ./huff_kl [-c|x] -v [nom_fichier]
+
+  - sans option : compression par défaut
+  - option '-c' : compression
+  - option '-d' : décompression
+
+Pour plus d'information, faire -> $man huff_kl.1.gz 
