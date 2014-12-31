@@ -1,7 +1,7 @@
 
 # Edition des liens et creation de l'executable
-huff_kl : Histogramme.cmx Huffman.cmx bitio.cmx compresseur.cmx decompresseur.cmx main.cmx
-	ocamlopt -o huff_kl Histogramme.cmx Huffman.cmx bitio.cmx compresseur.cmx decompresseur.cmx main.cmx
+huff-kl : Histogramme.cmx Huffman.cmx bitio.cmx compresseur.cmx decompresseur.cmx main.cmx
+	ocamlopt -o huff-kl Histogramme.cmx Huffman.cmx bitio.cmx compresseur.cmx decompresseur.cmx main.cmx
 
 
 # Bibliothèque Histogramme
